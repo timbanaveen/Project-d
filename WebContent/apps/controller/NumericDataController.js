@@ -25,18 +25,18 @@ angular.module('projectDApp').controller('numericDataController', ['$scope', fun
 		];
 
 	nameToDisplayMap = {
-		'Bot_no': 'Bot_no',
+		'Bot': 'Bot_no',
 		'Time': 'Time',
 		'Waypt': 'Waypt',
-		'DistToWaypt': 'DistToWaypt',
+		'Dist2Waypt': 'DistToWaypt',
 		'Lat': 'Latitude',
 		'Lon': 'Longitude',
 		'Pitch': 'Pitch',
 		'Roll': 'Roll',
 		'Act_heading': 'Act_heading',
 		'Des_bearing': 'Des_bearing',
-		'Error': 'Error',
-		'ControlMode': 'ControlMode',
+		'Err': 'Error',
+		'CtrlMode': 'ControlMode',
 		'Steer_L_volt': 'SteerLeft_Volt',
 		'Steer_R_volt': 'SteerRight_Volt',
 		'Motion_flag': 'Motion_flag'
@@ -62,7 +62,7 @@ angular.module('projectDApp').controller('numericDataController', ['$scope', fun
 			{
 				$scope[nameToDisplayMap[key]+'_binder'] = data[key];
 
-				if( key === 'Bot_no'
+				if( key === 'Bot'
 					&& botsMap[data[key]] === undefined )
 				{
 					$scope.bots.push({

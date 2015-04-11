@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="projectDApp">
+	<head>
+		<title>Project-D</title>
+		<script src="apps/lib/jquery-2.1.3.min.js"></script>
+		<script src="apps/lib/angular-debug.js"></script>
+		<script src="apps/lib/angular-route-1.3.min.js"></script>
+		<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script src="apps/lib/lodash-3.1.0.min.js"></script>
+		<script src="apps/lib/angular-google-maps.min.js"></script>
+		<script src="apps/src/main.js"></script>
+		<script src="apps/controller/ConnectController.js"></script>
+		<script src="apps/controller/ControlPanelController.js"></script>
+		<script src="apps/controller/NumericDataController.js"></script>
+		<script src="apps/controller/GoogleMapController.js"></script>
+		<link rel="stylesheet" type="text/css" href="apps/css/main.css">
+	</head>
+	<body ng-controller="connectController">
+		<div ng-view></div>
+	</body>
+</html>

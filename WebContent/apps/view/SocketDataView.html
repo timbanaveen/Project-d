@@ -1,0 +1,43 @@
+<div>
+	<div class="control-panel" ng-controller="controlPanelController">
+		<span class="comport-connect-text">Connected to "{{cp.comport_text}}."</span>
+        <span class="comport-disconnect" ng-click="disconnectPort()">Disconnect...</span>
+        <button class="cp-start {{cp.start_hide}}" ng-click="startComm()" title="Start Communication" ng-model="cp">Start</button>
+        <button class="cp-stop {{cp.stop_hide}}" ng-click="stopComm()" title="Stop Communication" ng-model="cp">Stop</button>
+		<div class="cp-status" ng-model="cp">{{cp.statusText}}</div>
+        <div class="rawdata">
+            <div class="rawdata-output">{{rawdataOutput}}</div>
+            <input type="text" placeholder="Input Command...." class="rawdata-input" ng-model="rawdataInput" ng-keypress="sendData()">
+        </div>
+	</div>
+    <div class="numeric-data" ng-controller="numericDataController">
+        <div class="key-value-main">
+            <div class="bot-info-table">
+                <div class="bot-info-header">
+                    <div class="bot-info-column bot-info-col1"><span>Bot No</span></div>
+                    <div class="bot-info-column bot-info-col2"><span>Latitude</span></div>
+                    <div class="bot-info-column bot-info-col3"><span>Longitude</span></div>
+                </div>
+                <div class="bot-info-data" ng-repeat="item in bots">
+                    <div class="bot-info-column bot-info-datacol1"><span>{{item.bot}}</span></div>
+                    <div class="bot-info-column bot-info-datacol2"><span>{{item.Latitude}}</span></div>
+                    <div class="bot-info-column bot-info-datacol3"><span>{{item.Longitude}}</span></div>
+                </div>
+            </div>
+            <div class="data-header">
+                <span>Data</span>
+            </div>
+            <div class="key-value-wrapper" ng-repeat="item in keysCollection">
+                <span class="key-data">{{item.displayName}}</span>
+                <div class="value-data-wrapper">
+                    <span class="value-data" ng-bind="{{item.name}}_binder"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="gmap-data" ng-controller="GoogleMapController">
+		<ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
+            <ui-gmap-polyline path='map.path'></ui-gmap-polyline>
+        </ui-gmap-google-map>
+	</div>
+</div>	

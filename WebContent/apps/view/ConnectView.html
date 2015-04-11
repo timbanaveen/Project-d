@@ -1,0 +1,6 @@
+<div class="home-main-view">
+	<span class="welcome-text">Welcome To Data-Visualizer!</span>
+	<span class="selectport-text">Select a port and connect.</span>
+	<select class="comport-select" id="comport-select" ng-model="comPort" ng-options="port.name for port in ports" ng-click="getPorts()"></select>
+	<button class="btn-connect" title="connects to input source" ng-click="connect()">Connect</button>
+</div>

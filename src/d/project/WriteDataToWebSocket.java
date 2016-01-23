@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class WriteDataToWebSocket{
 	private Pattern ptrn;
+	private Logger logger = LogManager.getLogger(WriteDataToWebSocket.class.getName());
 	
 	public WriteDataToWebSocket() {
 		this.ptrn = Pattern.compile("<([^>]+)>");
@@ -26,8 +30,10 @@ public class WriteDataToWebSocket{
 				try {
 					
 					if(ConnectionUtil.webSession != null
-							&& dataToWrite != null)
+							&& dataToWrite != null){
 						ConnectionUtil.webSession.getBasicRemote().sendText(dataToWrite);
+						logger.info("writing message:"+ dataToWrite);
+					}
 				
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

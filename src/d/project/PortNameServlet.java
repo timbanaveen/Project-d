@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 /**
@@ -16,6 +19,7 @@ import sun.org.mozilla.javascript.internal.json.JsonParser;
 @WebServlet("/PortNames")
 public class PortNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger logger = LogManager.getLogger(PortNameServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,6 +39,7 @@ public class PortNameServlet extends HttpServlet {
 		for(String str:ReadData.getPortNames())
 			portNames += (str + ",");
 		
+		logger.info("port names: "+portNames);
 		response.setContentType("text/plain");
 		response.getWriter().println(portNames);
 	}

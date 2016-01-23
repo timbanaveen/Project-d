@@ -1,6 +1,6 @@
 var myApp = angular.module('projectDApp');
 
-myApp.controller('GoogleMapController', ['$scope', function($scope) {
+myApp.controller('GoogleMapController', ['$scope', '$compile', function($scope, $compile) {
 	var nameToDisplayMap = {
 			'Bot_no': 'Bot_no',
 			'Time': 'Time',
@@ -17,18 +17,44 @@ myApp.controller('GoogleMapController', ['$scope', function($scope) {
 			'Steer_L_volt': 'SteerLeft_Volt',
 			'Steer_R_volt': 'SteerRight_Volt',
 			'Motion_flag': 'Motion_flag'
-		};
+		},
+		wayPoints = [
+			{ 
+				latitude: '42.423502', 
+				longitude: '-83.464704',
+				id: 'wp_1'
+			},
+			{
+				latitude: '42.423229', 
+				longitude: '-83.464731',
+				id: 'wp_2'
+			},
+			{
+				latitude: '42.423246', 
+				longitude: '-83.465118',
+				id: 'wp_3'
+			},
+			{
+				latitude: '42.423525', 
+				longitude: '-83.465111',
+				id: 'wp_4'
+			}
+		];
 
 	$scope.map = { 
 					center: { 
-						latitude: 45, 
-						longitude: -73 
+						latitude: 42.423502, 
+						longitude: -83.464704 
 					}, 
-					zoom: 8,
+					zoom: 10,
 					options: {
 						scrollwheel: false
 					}
 				};
+
+	$scope.wayPntMarkers = {}
+	$scope.wayPntMarkers.wayPoints = wayPoints;
+	$scope.wayPntMarkers.title = 'Way Points';
 
 	$scope.map.path = [];
 
@@ -50,4 +76,10 @@ myApp.controller('GoogleMapController', ['$scope', function($scope) {
 			});
 		}
 	});
+
+	$scope.wayPoints = function() {
+		//initialize coordinates in view from model.
+		var genWin = $compile('<gen-window></gen-window>')($scope);
+		document.body.insertBefore(genWin[0], document.body.querySelector('body *:first-child'));
+	};
 }]);

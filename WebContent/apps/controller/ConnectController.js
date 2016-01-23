@@ -1,4 +1,5 @@
-angular.module('projectDApp').controller('connectController', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+angular.module('projectDApp')
+	.controller('connectController', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 		var valuesLoaded = false,
 			statusTextEl,
 			getPorts;

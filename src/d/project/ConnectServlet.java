@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Servlet implementation class ConnectServlet
  * connects to data resource.
@@ -20,6 +23,7 @@ public class ConnectServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Logger logger = LogManager.getLogger(ConnectServlet.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,6 +39,8 @@ public class ConnectServlet extends HttpServlet {
 		portName = portName.substring(1, portName.length()-1); 
 		
 		String connectionStatus = getConnection(portName);
+
+		logger.info("connection status port: " + portName + " status: "+connectionStatus);
 		
 		response.setContentType("text/plain");
 		response.getWriter().println(connectionStatus);

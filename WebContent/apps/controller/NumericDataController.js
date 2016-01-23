@@ -71,9 +71,18 @@ angular.module('projectDApp').controller('numericDataController', ['$scope', fun
 						'Longitude': data['Lon']
 					});
 
-					botsMap[data[key]] = 1;
-				}	
+					botsMap[data[key]] = $scope.bots.length - 1;
+				}
+
+
 			}
+		}
+
+		if(botsMap[data['Bot']] !== undefined)
+		{
+			//update values.
+			$scope.bots[botsMap[data['Bot']]]['Latitude'] = data['Lat'];
+			$scope.bots[botsMap[data['Bot']]]['Longitude'] = data['Lon'];
 		}
 
 		$scope.$apply();

@@ -1,0 +1,19 @@
+<div class="genWindow">
+	<div class="genWindow-header">
+		<span class="genWindow-header-title">{{win.title}}</span>
+	</div>
+	<div class="genWindow-content">
+		<div class="wp-data-wrapper" ng-repeat="item in win.wayPoints">
+			<div class="wp-data-id">
+				<span>{{item.id}}</span>
+			</div>
+			<input type="text" class="wp-data-lat" ng-model="item.latitude" placeholder="Latitude"></input>
+			<input type="text" class="wp-data-lon" ng-model="item.longitude" placeholder="Longitude"></input>
+		</div>
+	</div>
+	<div class="genWindow-footer">
+		<button class="genWindow-btn cancel-btn" ng-click="cancel()">Cancel</button>
+		<button class="genWindow-btn submit-btn" ng-click="save()">Save</button>
+	</div>
+</div>
+<div class="genWindow-mask"></div>
